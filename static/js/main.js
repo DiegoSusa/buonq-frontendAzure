@@ -273,7 +273,7 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
 });
 
 
-const API_URL = 'https://buonq-api-hse5cnc3fzecawgu.centralus-01.azurewebsites.net';
+const API_URL = 'buonq-backend-f3hzcwd2fpaqaubh.centralus-01.azurewebsites.net';
 
 document.getElementById('reservationForm').addEventListener('submit', async function(e) {
     e.preventDefault();
