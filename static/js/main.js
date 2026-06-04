@@ -273,13 +273,15 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
 });
 
 
+const API_URL = 'https://buonq-api-hse5cnc3fzecawgu.centralus-01.azurewebsites.net';
+
 document.getElementById('reservationForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     var btn = document.getElementById('r');
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Booking...';
     btn.disabled = true;
     const formData = new FormData(this);
-    const response = await fetch('/reservar', {
+    const response = await fetch(API_URL + '/reservar', {
         method: 'POST',
         body: formData
     });
@@ -295,7 +297,6 @@ document.getElementById('reservationForm').addEventListener('submit', async func
         }, 3000);
     }
 });
-
 
 
 var galPop = document.getElementById('galPop');
