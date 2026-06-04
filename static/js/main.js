@@ -277,28 +277,58 @@ const API_URL = 'https://buonq-backend-f3hzcwd2fpaqaubh.centralus-01.azurewebsit
 
 document.getElementById('reservationForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+    
+    document.getElementById('resOk').style.display = 'none';
+    document.getElementById('resError').style.display = 'none';
+    
     var btn = document.getElementById('r');
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Booking...';
     btn.disabled = true;
+    
     const formData = new FormData(this);
-    const response = await fetch(API_URL + '/reservar', {
-        method: 'POST',
-        body: formData
-    });
-    const result = await response.json();
-    if(result.success){
-        btn.innerHTML = '<i class="fas fa-check"></i> Reserved!';
-        document.getElementById('resOk').style.display = 'block';
-        this.reset();
-        setTimeout(() => {
+    
+    try {
+        const response = await fetch(API_URL + '/reservar', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            btn.innerHTML = '<i class="fas fa-check"></i> Reserved!';
+            document.getElementById('resOk').style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-calendar-check"></i> Confirm Reservation';
+                btn.disabled = false;
+                document.getElementById('resOk').style.display = 'none';
+            }, 4000);
+        } else {
             btn.innerHTML = '<i class="fas fa-calendar-check"></i> Confirm Reservation';
             btn.disabled = false;
-            document.getElementById('resOk').style.display = 'none';
-        }, 3000);
-    } else {
+            
+            const errorDiv = document.getElementById('resError');
+            const errorText = document.getElementById('errorText');
+            errorText.innerText = result.error || 'Error al procesar la reserva';
+            errorDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+    } catch (error) {
         btn.innerHTML = '<i class="fas fa-calendar-check"></i> Confirm Reservation';
         btn.disabled = false;
-        alert(result.error || 'Error al reservar');
+        
+        const errorDiv = document.getElementById('resError');
+        const errorText = document.getElementById('errorText');
+        errorText.innerText = 'Error de conexión. Intenta nuevamente.';
+        errorDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
     }
 });
 
