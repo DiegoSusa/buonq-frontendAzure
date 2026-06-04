@@ -273,7 +273,7 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
 });
 
 
-const API_URL = 'buonq-backend-f3hzcwd2fpaqaubh.centralus-01.azurewebsites.net';
+const API_URL = 'https://buonq-backend-f3hzcwd2fpaqaubh.centralus-01.azurewebsites.net';
 
 document.getElementById('reservationForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -295,6 +295,10 @@ document.getElementById('reservationForm').addEventListener('submit', async func
             btn.disabled = false;
             document.getElementById('resOk').style.display = 'none';
         }, 3000);
+    } else {
+        btn.innerHTML = '<i class="fas fa-calendar-check"></i> Confirm Reservation';
+        btn.disabled = false;
+        alert(result.error || 'Error al reservar');
     }
 });
 
