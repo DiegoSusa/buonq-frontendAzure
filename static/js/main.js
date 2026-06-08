@@ -100,19 +100,15 @@ document.querySelectorAll('.sovtrend .ttag').forEach(function(t) {
     });
 });
 
-
 $(document).ready(function() {
 	$('.magnific_popup').magnificPopup({
-	  disableOn: 700,
-	  type: 'iframe',
-	  mainClass: 'mfp-fade',
-	  removalDelay: 160,
-	  preloader: false,
-	  fixedContentPos: false,
-	  disableOn: 300
-	});	
+        type: 'inline',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        fixedContentPos: true
+    });
 });
-
 
 function filterMenu(cat) {
     // sync filter buttons

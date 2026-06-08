@@ -2334,6 +2334,7 @@ footer {
     transform: scale(0.82);
     transform-origin: center;
   }
+  
   .ggrid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -2435,3 +2436,116 @@ footer {
     font-size: 1.8rem;
   }
 }
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    position: relative;
+    overflow-x: visible;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.container {
+    overflow-x: hidden;
+}
+
+#reservation {
+    order: 1 !important;
+    display: block !important;
+    margin-bottom: 50px !important;
+    padding-bottom: 50px !important;
+}
+
+#blog {
+    order: 2 !important;
+    display: block !important;
+    margin-top: 50px !important;
+    padding-top: 50px !important;
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+footer {
+    order: 3 !important;
+}
+
+#reservation,
+#blog,
+#reservation *,
+#blog * {
+    position: relative !important;
+    float: none !important;
+    clear: both !important;
+}
+
+@media (max-width: 768px) {
+    #reservation {
+        margin-bottom: 80px !important;
+        padding-bottom: 80px !important;
+    }
+    
+    #blog {
+        margin-top: 100px !important;
+        padding-top: 80px !important;
+    }
+    
+    #reservation::after {
+        content: "";
+        display: block;
+        height: 60px;
+        width: 100%;
+        clear: both;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 992px) {
+    #hero .col-lg-6:last-child {
+        position: relative !important;
+        left: -60px !important;
+    }
+    
+    .fcard.fc1 {
+        left: -15px !important;
+    }
+    
+    .fcard.fc2 {
+        right: -25px !important;
+    }
+    
+    .fcard.fc3 {
+        right: -45px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    #hero .col-lg-6:last-child {
+        left: -80px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #hero .col-lg-6:last-child {
+        left: -40px !important;
+    }
+    
+    .fcard.fc1 {
+        left: -20px !important;
+    }
+    
+    .fcard.fc2 {
+        right: -30px !important;
+    }
+    
+    .fcard.fc3 {
+        right: -50px !important;
+    }
+}
+
+
